@@ -1,0 +1,33 @@
+# Runs the shared authentication contract on both platforms for every pull request.
+# This is the fast PR layer of the strategy. The slower layers (integration, UI,
+# release validation) are sketched in docs/ci-pipeline.md, not implemented here.
+name: SDK contract tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  ios:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run iOS contract tests
+        working-directory: example/ios
+        run: swift test
+
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.10.2"
+      - name: Run Android contract tests
+        working-directory: example/android
+        run: gradle test

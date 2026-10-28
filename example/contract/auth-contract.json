@@ -1,0 +1,26 @@
+[
+  {
+    "id": "AUTH-01",
+    "description": "Correct username and password",
+    "given": { "username": "john", "password": "correct-password", "serverStatus": 200 },
+    "expected": { "result": "success", "serverCalled": true }
+  },
+  {
+    "id": "AUTH-02",
+    "description": "Empty password is rejected in the app, before calling the server",
+    "given": { "username": "john", "password": "", "serverStatus": 200 },
+    "expected": { "result": "invalidInput", "serverCalled": false }
+  },
+  {
+    "id": "AUTH-03",
+    "description": "Wrong password is rejected by the server",
+    "given": { "username": "john", "password": "wrong-password", "serverStatus": 401 },
+    "expected": { "result": "invalidCredentials", "serverCalled": true }
+  },
+  {
+    "id": "AUTH-04",
+    "description": "Login service is down",
+    "given": { "username": "john", "password": "correct-password", "serverStatus": 503 },
+    "expected": { "result": "serviceUnavailable", "serverCalled": true }
+  }
+]

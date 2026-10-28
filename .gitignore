@@ -1,0 +1,6 @@
+.build/
+.gradle/
+build/
+.DS_Store
+.idea/
+*.xcodeproj/xcuserdata/
