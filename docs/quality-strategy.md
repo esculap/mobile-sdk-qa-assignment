@@ -212,7 +212,7 @@ Android being green is a clue, not proof. The iOS implementation differs (Keycha
 - **Why:** I can't prioritise risks I can't see. Some automation exists, so reusing it is faster than starting over.
 - **Information:** list of modules and owners, who depends on whom, which apps consume which versions; existing test suites with their duration, flaky rate and what they cover; recent incidents and escaped bugs.
 - **Who:** module leads, platform/CI engineers, one or two consuming-app teams.
-- **First outcome (first 2–3 weeks):** a one-page map of modules, dependencies and consumers; a list of existing tests marked keep, fix or remove; the top 5 risks.
+- **First outcome (first 2–3 weeks):** a one-page map of modules, dependencies and consumers; a list of existing tests; the top 5 risks.
 
 **2. Agree the test strategy and a PR quality gate, and try it on one critical module.**
 
